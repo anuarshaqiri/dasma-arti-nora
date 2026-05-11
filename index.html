@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Arti & Andrea - Ftesa e darsmës</title>
+<title> Arti & Nora - Ftesa e dasmës</title>
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -86,7 +86,7 @@ tailwind.config = {
 
   <!-- Content -->
   <div class="relative z-10 text-white px-6">
-    <h1 class="text-6xl md:text-8xl font-display mt-4 animate-fadeInUp">Arti & Andrea</h1>
+    <h1 class="text-6xl md:text-8xl font-display mt-4 animate-fadeInUp">Arti & Nora</h1>
     <p class="mt-4 text-xl tracking-widest animate-fadeInUp">Janë duke u martuar</p>
     <p class="mt-2 text-lg animate-fadeInUp">17 Korrik 2026</p>
   </div>
@@ -98,6 +98,31 @@ tailwind.config = {
   <h2 class="text-4xl font-display mb-6">Ftesë për dasme</h2>
   <p class="max-w-2xl mx-auto text-lg text-warmgray">
     Ju ftojmë të ndani me ne gëzimin e martesës sonë më 17 Korrik 2026.
+  </p>
+</section>
+<!-- RREGULLA -->
+<section class="py-24 text-center px-6 bg-cream">
+  <h2 class="text-4xl font-display mb-8">Rregullat e Dasmës</h2>
+
+  <div class="max-w-2xl mx-auto text-lg text-warmgray space-y-3">
+    <p>• Ju lutemi të vini me kohë.</p>
+    <p>• Ju lutemi mos i merrni me ju fëmijë në moshë të vogël.</p>
+    <p>• Veshja: elegante / festive.</p>
+    <p>• Respektoni momentet e ceremonisë.</p>
+    <p>• Argëtohuni dhe festoni me ne.</p>
+  </div>
+</section>
+
+<!-- ORA E ARDHJES -->
+<section class="py-24 text-center px-6 bg-blush">
+  <h2 class="text-4xl font-display mb-6">Ora e Ardhjes</h2>
+
+  <p class="text-lg text-warmgray">
+    Ju lutemi të vini nga ora <strong>19:00</strong>
+  </p>
+
+  <p class="mt-2 text-lg text-warmgray">
+    Ceremonia fillon në kohë<div class=""></div>
   </p>
 </section>
 
@@ -131,13 +156,14 @@ tailwind.config = {
 
 <!-- FOOTER -->
 <footer class="py-10 text-center text-sm text-warmgray">
-  E bërë me dashuri për Arti & Andrea
+  E bërë me dashuri për Arti & Nora | © 2026
+
 </footer>
 
 <!-- SCRIPTS -->
 <script>
   /* Countdown */
-  const weddingDate = new Date("July 17, 2026 00:00:00").getTime();
+  const weddingDate = new Date("July 17, 2026 19:00:00").getTime();
   
   setInterval(() => {
     const now = new Date().getTime();

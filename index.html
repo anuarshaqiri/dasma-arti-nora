@@ -218,10 +218,23 @@ tailwind.config = {
   music.play();
 }, { once: true });
 
+window.addEventListener("scroll", () => {
+  const arrow = document.getElementById("scrollArrow");
+
+  if (window.scrollY > 50) {
+    arrow.style.opacity = "0";
+    arrow.style.pointerEvents = "none";
+  } else {
+    arrow.style.opacity = "1";
+    arrow.style.pointerEvents = "auto";
+  }
+});
+
   </script>
 <!-- SCROLL ARROW -->
-<a href="#bottom"
-   class="fixed bottom-6 left-1/2 -translate-x-1/2 text-white text-4xl z-50 animate-bounce">
+<a id="scrollArrow"
+   href="#bottom"
+   class="fixed bottom-6 left-1/2 -translate-x-1/2 text-white text-4xl z-50 animate-bounce transition-opacity duration-500">
   ↓
 </a>
 <div id="bottom"></div>

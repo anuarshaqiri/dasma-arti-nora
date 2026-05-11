@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emma & James — Wedding Invitation</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        cream: '#FFFBF5',
+        blush: '#F2E2DA',
+        gold: '#C9A96E',
+        warmdark: '#3D3230',
+        warmgray: '#7A6E68',
+      },
+      fontFamily: {
+        display: ['Playfair Display', 'serif'],
+        body: ['Inter', 'sans-serif'],
+        script: ['Cormorant Garamond', 'serif'],
+      },
+      animation: {
+        fadeInUp: 'fadeInUp 1s ease-out forwards',
+        float: 'float 12s linear infinite'
+      },
+      keyframes: {
+        fadeInUp: {
+          '0%': { opacity: 0, transform: 'translateY(30px)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' },
+        },
+        float: {
+          '0%': { transform: 'translateY(-10vh)', opacity: 0 },
+          '10%': { opacity: 0.8 },
+          '100%': { transform: 'translateY(110vh)', opacity: 0 }
+        }
+      }
+    }
+  }
+}
+</script>
+
+<style>
+.petal {
+  position: absolute;
+  top: -10%;
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle, #f7ede8, #c9a96e);
+  border-radius: 50%;
+  opacity: 0;
+  animation: float linear infinite;
+}
+</style>
+</head>
+
+<body class="bg-cream font-body text-warmdark overflow-x-hidden">
+
+<!-- AUDIO -->
+<audio id="weddingMusic" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_d0a6b2c5c8.mp3?filename=romantic-wedding-ambient-11084.mp3" type="audio/mpeg">
+</audio>
+
+<!-- MUSIC BUTTON -->
+<button id="musicToggle" class="fixed bottom-6 right-6 bg-gold text-white px-4 py-3 rounded-full shadow-lg z-50">
+  ▶ Play Music
+</button>
+
+<!-- HERO -->
+<section class="relative h-screen flex items-center justify-center text-center overflow-hidden">
+
+  <!-- Background -->
+  <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e')] bg-cover bg-center"></div>
+  <div class="absolute inset-0 bg-black/50"></div>
+
+  <!-- Petals -->
+  <div class="absolute inset-0 pointer-events-none">
+    <span class="petal" style="left:10%; animation-duration:12s;"></span>
+    <span class="petal" style="left:25%; animation-duration:16s;"></span>
+    <span class="petal" style="left:40%; animation-duration:14s;"></span>
+    <span class="petal" style="left:60%; animation-duration:18s;"></span>
+    <span class="petal" style="left:80%; animation-duration:13s;"></span>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 text-white px-6">
+    <p class="text-lg opacity-80 animate-fadeInUp">Together with their families</p>
+    <h1 class="text-6xl md:text-8xl font-display mt-4 animate-fadeInUp">Emma & James</h1>
+    <p class="mt-4 text-xl tracking-widest animate-fadeInUp">are getting married</p>
+    <p class="mt-2 text-lg animate-fadeInUp">17 July 2026</p>
+  </div>
+
+</section>
+
+<!-- INVITATION -->
+<section class="py-24 text-center px-6">
+  <h2 class="text-4xl font-display mb-6">Wedding Invitation</h2>
+  <p class="max-w-2xl mx-auto text-lg text-warmgray">
+    We invite you to share in the joy of our marriage on 17 July 2026.
+  </p>
+</section>
+
+<!-- COUNTDOWN -->
+<section class="py-16 bg-blush text-center">
+  <h2 class="text-3xl font-display mb-6">Countdown</h2>
+  <div id="countdown" class="text-2xl font-semibold"></div>
+</section>
+
+<!-- RSVP -->
+<section class="py-24 px-6 text-center">
+  <h2 class="text-4xl font-display mb-8">RSVP</h2>
+
+  <form class="max-w-xl mx-auto space-y-4">
+    <input type="text" placeholder="Your Name" class="w-full p-3 border rounded">
+    <input type="number" placeholder="Number of Guests" class="w-full p-3 border rounded">
+
+    <select class="w-full p-3 border rounded">
+      <option>Will you attend?</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+
+    <textarea placeholder="Message" class="w-full p-3 border rounded"></textarea>
+
+    <button class="bg-gold text-white px-6 py-3 rounded hover:opacity-80">
+      Send RSVP
+    </button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-10 text-center text-sm text-warmgray">
+  Made with love for Emma & James
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+/* Countdown */
+const weddingDate = new Date("July 17, 2026 00:00:00").getTime();
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const diff = weddingDate - now;
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+  document.getElementById("countdown").innerHTML =
+    days + " days " + hours + " hours";
+}, 1000);
+
+/* Music */
+const music = document.getElementById("weddingMusic");
+const btn = document.getElementById("musicToggle");
+
+let playing = false;
+
+btn.addEventListener("click", () => {
+  if (!playing) {
+    music.play();
+    btn.innerHTML = "⏸ Pause Music";
+    playing = true;
+  } else {
+    music.pause();
+    btn.innerHTML = "▶ Play Music";
+    playing = false;
+  }
+});
+</script>
+
+</body>
+</html>

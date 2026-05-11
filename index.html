@@ -122,7 +122,7 @@ tailwind.config = {
     <input type="number" placeholder="Number of Guests" class="w-full p-3 border rounded">
 
     <select class="w-full p-3 border rounded">
-      <option>Will you attend?</option>
+      <option>A do të vini?</option>
       <option>Yes</option>
       <option>No</option>
     </select>
@@ -130,14 +130,14 @@ tailwind.config = {
     <textarea placeholder="Message" class="w-full p-3 border rounded"></textarea>
 
     <button class="bg-gold text-white px-6 py-3 rounded hover:opacity-80">
-      Send RSVP
+      Dërgo
     </button>
   </form>
 </section>
 
 <!-- FOOTER -->
 <footer class="py-10 text-center text-sm text-warmgray">
-  Made with love for Emma & James
+  E bërë me dashuri për Arti & Andrea
 </footer>
 
 <!-- SCRIPTS -->
@@ -146,33 +146,16 @@ tailwind.config = {
 const weddingDate = new Date("July 17, 2026 00:00:00").getTime();
 
 setInterval(() => {
-  const now = new Date().getTime();
-  const diff = weddingDate - now;
-
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-  document.getElementById("countdown").innerHTML =
-    days + " days " + hours + " hours";
-}, 1000);
-
-/* Music */
-const music = document.getElementById("weddingMusic");
-const btn = document.getElementById("musicToggle");
-
-let playing = false;
-
-btn.addEventListener("click", () => {
-  if (!playing) {
-    music.play();
-    btn.innerHTML = "⏸ Pause Music";
-    playing = true;
-  } else {
-    music.pause();
-    btn.innerHTML = "▶ Play Music";
-    playing = false;
-  }
-});
+document.getElementById("countdown").innerHTML =
+  days + " ditë " +
+  hours + " orë " +
+  minutes + " minuta " +
+  seconds + " sekonda";
 </script>
 
 </body>
